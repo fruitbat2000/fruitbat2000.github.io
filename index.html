@@ -19,12 +19,12 @@
 
 		function sendHeight() {
 			if(parent.postMessage) {
-				var height = $('body').outerHeight() + 60;
+				var height = document.body.offsetHeight + 60;
 				parent.postMessage(height, '*');
 			}
 		}
 		
-		// mutation observer
+		// mutation observer. mutation observer is a catch all for observing DOM changes, but is only supported in IE11+
 		var target = document.body,
 				config = {
 					attributes: true,
@@ -37,7 +37,7 @@
 			sendHeight();
 		});
 
-		// test events
+		// test events - to be removed :)
 		$('.add-para').on('click', function(){
 			$('body').append('<p>new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph </p>');
 		});
@@ -47,7 +47,7 @@
 		});
 
 		// init height and observer and resize event
-		$(window).on('resize', sendHeight);
+		window.onresize = sendHeight;
 		observer.observe(target, config);
 		sendHeight();
 
