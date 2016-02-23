@@ -16,7 +16,7 @@
 
 		function sendHeight() {
 			if(parent.postMessage) {
-				var height = $('body').height();
+				var height = $('body').outerHeight() + 60;
 				parent.postMessage(height, '*');
 			}
 		}
