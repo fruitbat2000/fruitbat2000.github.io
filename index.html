@@ -10,6 +10,9 @@
 	<body>
 		<h2>Hello, I'm a test iframe</h2>
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+		<button class="add-para">Add a paragraph</button>
+		<div class="show-me"><h1>Show/hide me</h1></div>
+		<button class="show-hide">Show/hide</button>
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script>
@@ -20,8 +23,32 @@
 				parent.postMessage(height, '*');
 			}
 		}
+		
+		// mutation observer
+		var target = document.body,
+				config = {
+					attributes: true,
+					childList: true,
+					characterData: true,
+					subtree: true
+				};
+				
+		var observer = new MutationObserver(function(mutations){
+			sendHeight();
+		});
 
+		// test events
+		$('.add-para').on('click', function(){
+			$('body').append('<p>new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph new paragraph </p>');
+		});
+
+		$('.show-hide').on('click', function(){
+			$('.show-me').slideToggle();
+		});
+
+		// init height and observer and resize event
 		$(window).on('resize', sendHeight);
+		observer.observe(target, config);
 		sendHeight();
 
 		</script>
