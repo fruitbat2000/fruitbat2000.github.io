@@ -15,27 +15,9 @@
 		<button class="show-hide">Show/hide</button>
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://googledrive.com/host/0B6VxXGbcJbteRGV2c2dqbWVWWjA/postMessage.js"></script>
 		<script>
 
-		function sendHeight() {
-			if(parent.postMessage) {
-				var height = document.body.offsetHeight + 60;
-				parent.postMessage(height, '*');
-			}
-		}
-		
-		// mutation observer. mutation observer is a catch all for observing DOM changes, but is only supported in IE11+
-		var target = document.body,
-				config = {
-					attributes: true,
-					childList: true,
-					characterData: true,
-					subtree: true
-				};
-				
-		var observer = new MutationObserver(function(mutations){
-			sendHeight();
-		});
 
 		// test events - to be removed :)
 		$('.add-para').on('click', function(){
@@ -45,11 +27,6 @@
 		$('.show-hide').on('click', function(){
 			$('.show-me').slideToggle();
 		});
-
-		// init height and observer and resize event
-		window.onresize = sendHeight;
-		observer.observe(target, config);
-		sendHeight();
 
 		</script>
 	</body>
