@@ -33,5 +33,13 @@
 	<a class="twitter">Twitter</a>
 	<a class="pinterest">Pinterest</a>
 	<a class="gplus">G+</a>
+
+	<button class="change-meta">Change meta information</button>
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+	<script>
+		$('.change-meta').on('click', function(){
+			$('[property="og:image"]').attr('content', 'http://fruitbat2000.github.io/img/gw2.jpg');
+		});
+	</script>
 </body>
 </html>
