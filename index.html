@@ -18,10 +18,6 @@
 		<!--<script src="https://googledrive.com/host/0B6VxXGbcJbteRGV2c2dqbWVWWjA/postMessage.js"></script>-->
 		<script>
 
-		window.addEventListener('message', function(e){
-			console.log(e);
-		});
-
 		function sendHeight() {
 			if(parent.postMessage) {
 				var height = document.body.offsetHeight + 60;
@@ -46,6 +42,11 @@
 		// init height, observer and resize event
 		window.addEventListener('resize', sendHeight);
 		observer.observe(target, config);
+		window.addEventListener('message', function(e){
+			if(e.data === 'receiving') {
+				sendHeight();
+			}
+		});
 		sendHeight();
 
 
