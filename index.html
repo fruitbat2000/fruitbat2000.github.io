@@ -19,6 +19,25 @@
 	</style>
 </head>
 <body>
+	<!-- FB SDK -->
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1590419421287041',
+	      xfbml      : true,
+	      version    : 'v2.6'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<h1>image share testing</h1>
 	<figure>
 		<img src="./img/fruitbat1.jpg" alt="A fruitbat">
