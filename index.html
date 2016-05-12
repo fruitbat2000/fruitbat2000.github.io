@@ -48,7 +48,7 @@
 		<figcaption>Some concept art</figcaption>
 	</figure>
 	<p>some text</p>
-	<a href="https://www.facebook.com/v2.3/dialog/share?href=https%3A%2F%2Ffruitbat2000.github.io%2Fshare.html&client_id=966242223397117&ret=login&ext=1463070696&hash=AeabQV0LqTK0zqql" class="fb" target="_blank">Facebook</a>
+	<button class="fb">Facebook</button>
 	<a class="twitter">Twitter</a>
 	<a class="pinterest">Pinterest</a>
 	<a class="gplus">G+</a>
@@ -59,6 +59,18 @@
 		$('.change-meta').on('click', function(){
 			$('[property="og:image"]').attr('content', 'http://fruitbat2000.github.io/img/gw2.jpg');
 		});
+
+		$('.fb').on('click', function(){
+			FB.ui({
+			  method: 'feed',
+			  link: 'http://fruitbat2000.github.io',
+			  caption: 'Oh looky, a caption (hopefully)',
+			  picture: 'http://fruitbat2000.github.io/img/fruitbat1.jpg'
+			}, function(response){
+				console.log(response);
+			});
+		});
+
 	</script>
 </body>
 </html>
