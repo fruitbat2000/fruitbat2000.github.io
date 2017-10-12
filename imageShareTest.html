@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:url" content="http://fruitbat2000.github.io">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Testing facebook nonsense">
+	<meta property="og:description" content="some crappy description text">
+	<meta property="og:image" content="http://fruitbat2000.github.io/img/gw2.jpg">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta properyy="twitter:description" content="twiter description">
+	<meta property="twitter:image" content="http://">
+	<title>Share testing</title>
+
+	<style>
+		figure {
+			width: 400px;
+		}
+		img {
+			max-width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<!-- FB SDK -->
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1590419421287041',
+	      xfbml      : true,
+	      version    : 'v2.6'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<h1>image share testing</h1>
+
+	<figure itemscope itemtype="http://schema.org/Product">
+		<img itemprop="image" src="./img/fruitbat1.jpg" alt="A fruitbat">
+		<figcaption itemprop="description">A fruitbat</figcaption>
+	</figure>
+	<figure>
+		<img src="./img/gw2.jpg" alt="Concept art">
+		<figcaption>Some concept art</figcaption>
+	</figure>
+	<p>some text</p>
+	<button class="fb">Facebook</button>
+	<a class="twitter">Twitter</a>
+	<a href="https://www.pinterest.com/pin/create/link/?url=https%3A%2F%2Ffruitbat2000.github.io%2F&media=https%3A%2F%2Ffruitbat2000.github.io%2Fimg%2Ffruitbat1.jpg&description=description.">
+	    <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+	</a>
+	<!-- <a class="gplus">G+</a> -->
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.google.co.uk%2F">Google+</a>
+
+	<button class="change-meta">Change meta information</button>
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+	<script>
+		$('.change-meta').on('click', function(){
+			$('[property="og:image"]').attr('content', 'http://fruitbat2000.github.io/img/gw2.jpg');
+		});
+
+		$('.fb').on('click', function(){
+			FB.ui({
+			  method: 'feed',
+			  link: 'http://fruitbat2000.github.io',
+			  caption: 'Oh looky, a caption (hopefully)',
+			  picture: 'http://fruitbat2000.github.io/img/fruitbat1.jpg'
+			}, function(response){
+				console.log(response);
+			});
+		});
+
+	</script>
+</body>
+</html>
