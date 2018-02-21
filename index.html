@@ -5,14 +5,32 @@
 			// receive iframe postMessage events
 			window.addEventListener('message', function(e){
 				console.log('message', e);
+				var iframe = document.getElementById('humanity-test');
+				iframe.classList.add('hidden');
 				//$this.height(e.originalEvent.data.height);
 			});
 
 			window.addEventListener('onmessage', function(e){
 				console.log('onmessage', e);
+				var iframe = document.getElementById('humanity-test');
+				iframe.classList.add('hidden');
 				//$this.height(e.originalEvent.data.height);
 			});
 		</script>
+		<style>
+			#humanity-test {
+				left: 0;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			#humanity-test.hidden {
+				max-height: 0px;
+				max-width: 0px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
